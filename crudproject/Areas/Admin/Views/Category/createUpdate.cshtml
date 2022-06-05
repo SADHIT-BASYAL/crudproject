@@ -1,0 +1,41 @@
+﻿@model crudproject.Models.ViewModel.CategoryVM 
+   <form method="post" asp-action="createUpdate">
+       <input type="hidden" asp-for="Category.Id" />
+       <div class="border-bottom p-3 mt-3">
+           <div class="row pb-3">
+               <h2 class="text-primary">@((Model.Category==null || Model.Category.Id==0)? "Create":"Update") Category </h2>
+               <hr />
+           </div>
+           <div asp-validation-summary="All"></div>
+           <div class="row mb-3">
+               <label asp-for="Category.Name"></label>
+               <input asp-for="Category.Name" asp-action="form-control" />
+               <span asp-validation-for="Category.Name" class="text-danger"></span>
+           </div>
+
+           <div class="row mb-3">
+               <label asp-for="Category.Displayorder"></label>
+               <input asp-for="Category.Displayorder" asp-action="form-control" />
+               <span asp-validation-for="Category.Displayorder " class="text-danger"></span>
+           </div>
+        @if(Model.Category==null|| Model.Category.Id == 0)
+        {
+            <Button class="btn btn-primary" type="submit">Create</Button>
+        }
+        else
+        {
+           <button class="btn btn-primary" type="submit">Update </button>
+ 
+        }
+
+
+       </div>
+       <a asp-action="index" asp-controller="category">Back To List</a>
+
+   </form>
+
+   @*@section scripts{
+       @{
+           <partial name="_ValidationScriptsParties"/>
+       }
+   }*@
